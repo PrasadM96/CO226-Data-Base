@@ -1,0 +1,51 @@
+CREATE DATABASE E15065;
+
+USE E15065;
+
+CREATE TABLE Customer(
+    CustomerId INTEGER,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Address1 VARCHAR(50),
+    Address2 VARCHAR(50),
+    Address3 VARCHAR(50),
+    Comments VARCHAR(100),
+    PRIMARY KEY (CustomerId)
+);
+
+CREATE TABLE Items(
+    OrderId INTEGER,
+    Size VARCHAR(10),
+    Colour VARCHAR(10),
+    ExtraItems VARCHAR(30),
+    CustomerId INTEGER,
+    PRIMARY KEY(OrderId),
+    FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId)
+);
+
+
+INSERT INTO Customer VALUES(1,'Prasad','Madusanka','No.203','Temple road','Mirigama','Great deal');
+INSERT INTO Customer VALUES(2,'Gihan','Bawantha','No.20','Hansagiri road','Gampaha','Hope fast delivery');
+INSERT INTO Customer VALUES(3,'Gimhan','Akalanka','No.33','Miriswatta','Gampaha','');
+INSERT INTO Customer VALUES(4,'Hashan','Madusanka','No.08','Swarnajayanthi road','Mirigama','Hope to order more items');
+INSERT INTO Customer VALUES(5,'Nimal','Jayasanka','No.88/2','Walaw Watta','Horana','Great deal');
+
+
+INSERT INTO Items VALUES(1,'Small','RED','Cap',1);
+INSERT INTO Items VALUES(2,'Small','GREEN','Wrist Band',2);
+INSERT INTO Items VALUES(3,'Medium','RED','Wrist Band',3);
+INSERT INTO Items VALUES(4,'Large','BLUE','Wrist Band',4);
+INSERT INTO Items VALUES(5,'Medium','PURPLE','Cap',5);
+INSERT INTO Items VALUES(6,'Large','GREEN','Cap',4);
+
+
+						
+UPDATE Customer
+SET FirstName='Himal',LastName='Sudasingshe'
+WHERE CustomerId=1;
+
+UPDATE items
+SET Colour='BLUE' 
+WHERE CustomerId=3;
+
+DELETE FROM Items WHERE CustomerId=4 AND Colour='GREEN';
